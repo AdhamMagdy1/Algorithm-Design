@@ -40,5 +40,3 @@ To run the program, follow these steps:
 - Ahmed Shehata        (https://github.com/Ahmedashraf547)
 - Elhussien Admed      (https://github.com/hussienahmed859)
 
-## License
- This project is licensed under the MIT License.
