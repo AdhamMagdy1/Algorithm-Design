@@ -38,5 +38,5 @@ To run the program, follow these steps:
 - Eslam Tarek          (https://github.com/EslamTarekFarouk)
 - Ahmed Ashraf         (https://github.com/Ahmedashraf547)
 - Ahmed Shehata        (https://github.com/Ahmedashraf547)
-- Elhussien Admed      (https://github.com/hussienahmed859)
+- Elhussien Ahmed      (https://github.com/hussienahmed859)
 
