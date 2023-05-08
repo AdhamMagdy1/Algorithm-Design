@@ -24,7 +24,11 @@ Example 1:
 ` Maximum Profit: 11 `  
 
 ## Approach
-[???]
+We will be using dynamic programming to solve each problem. Dynamic programming is a technique for solving complex problems by breaking them down into smaller subproblems and storing the results of each subproblem to avoid redundant calculations.
+
+In addition, we will also implement the naive method for each problem and compare the results and efficiency of both methods. The naive method involves solving the problem directly without taking advantage of any substructure or repeated calculations. By comparing the results and efficiency of both methods, we can gain insights into the tradeoffs between accuracy and efficiency and make informed decisions about which approach to use in different scenarios.
+
+We believe that this approach will provide a comprehensive and effective way to solve the problems  and enable us to gain a deeper understanding of dynamic programming and its applications.
 ## Instructions
 To run the program, follow these steps:
 
