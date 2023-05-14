@@ -7,7 +7,7 @@ import itertools
 import numpy as np
 import bisect
 
-####################### Question One #########################
+####################### Part One #########################
 
 # >>>>>>>>>>>>>>>>>>>Daynmic approach<<<<<<<<<<<<<<<<<<:
 def jobs_function(jobs):
@@ -35,6 +35,9 @@ jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
 number_of_jobs, maximum_profit = jobs_function(jobs)
 print("Number of jobs done:", number_of_jobs)
 print("Maximum profit:", maximum_profit)
+
+####################### Part Two #########################
+
 # function to get the max profit by try all the possible combination without any overlap 
 def brute_force( jobs, S, F, P, n):
     profits = []
