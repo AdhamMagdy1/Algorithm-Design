@@ -1,3 +1,15 @@
+################## importing all the needed libraries ##################
+import matplotlib.pyplot as plt
+import pandas as pd
+import time
+import random
+import itertools
+import numpy as np
+import bisect
+
+####################### Question One #########################
+
+# >>>>>>>>>>>>>>>>>>>Daynmic approach<<<<<<<<<<<<<<<<<<:
 def jobs_function(jobs):
     #sort job list in descinding order
     jobs = sorted(jobs, key=lambda x: x[2], reverse=True)
