@@ -56,3 +56,27 @@ def brute_force( jobs, S, F, P, n):
                 profits.append(profit)
                 
     return max(profits)
+
+
+#We use the itertools.permutations() function to generate all possible permutations of the jobs
+import itertools
+def get_max_pro(jobs):
+    max_pro = 0
+    n_done_jobs = 0
+#For each permutation, we iterate through the jobs in order and calculate the total profit earned if we schedule them in that order
+    for perm in itertools.permutations(jobs):
+        pro = 0
+        t = 0
+        for job in perm:
+            if t + 1 <= job[1]:
+                t += 1
+                pro += job[2]
+#If the total profit earned is greater than the current maximum profit, we update the maximum profit and the number of jobs done
+        if pro > max_pro:
+            max_pro = pro
+            n_done_jobs = len(perm)
+    return (n_done_jobs, max_pro)
+
+#Using the Example    
+jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
+print(get_max_pro(jobs))
