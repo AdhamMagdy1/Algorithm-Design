@@ -118,5 +118,51 @@ def brute_force( jobs, S, F, P, n):
                 
     return max(profits)
 
+# let's define another approach to slove the problem
+def greedy_recursive_sol( S, F, spliter, n):
+    """
+    that algorithm assumes the data are sorted by finish time
+    ,the ids start from 0 to n and there exists a redundent job k ; S[k] = F[k] = 0.
+    inputs :
+       S       : list ------> start time of the jobs 
+       F       : list------> finish time of the jobs
+       spliter : 0 -------> subproblem spliter such that A.spliter  is the activity 
+       n       : integer-------> N.O jobs
+    output :
+       set represent the greedy best solu 'optimal'
+    
+    """
+    m = spliter + 1    
+    while (m <= n) & (S[m] < F[spliter]) :
+        m = m + 1
+        
+    if m < n :
+        return {m}.union(greedy_recursive_sol( S, F, m, n))
+    else :
+        return {m}
+    
+def dynamic_solu( S, F, P):
+    """
+    that algorithm assumes the data are sorted by finish time 
+    inputs :
+       S : list ------> start time of the jobs
+       F : list------> finish time of the jobs
+       P : list------> profit of each job
+    output :
+       the maximum profit
+    """
+    # if the all the jobs have the same profit then use a greedy approach O(n)
+    if (len(set(P)) == 1):
+        jobs = greedy_recursive_sol(S, F, 0, len(S)-1)
+        return len(jobs)*P[0]
+    else :
+        # if not use the dynamic approach  O( n*lg(n) )
+        memoize = [[0,0]]
+        for s, f, p in zip(S,F,P):
+            i = bisect.bisect(memoize, [s + 1]) - 1
+            if (memoize[i][1] + p) > memoize[-1][1]:
+                memoize.append([f, memoize[i][1] + p])        
+        return memoize[-1][1]   
+
 
 
