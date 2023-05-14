@@ -35,3 +35,24 @@ jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
 number_of_jobs, maximum_profit = jobs_function(jobs)
 print("Number of jobs done:", number_of_jobs)
 print("Maximum profit:", maximum_profit)
+# function to get the max profit by try all the possible combination without any overlap 
+def brute_force( jobs, S, F, P, n):
+    profits = []
+    for n in range(1,n):
+        Combinations = list(combinations(jobs,n))
+        for c in Combinations:
+            overlap = False
+            profit = 0
+            for i in range(len(c)):
+                job_i = c[i]
+                profit += P[job_i]
+                for j in range(i+1,len(c)):
+                    job_j = c[j]
+                    if F[job_i] > S[job_j] and F[job_j] > S[job_i]:
+                        overlap = True
+                if overlap:
+                    break
+            if not(overlap):
+                profits.append(profit)
+                
+    return max(profits)
