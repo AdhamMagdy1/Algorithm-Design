@@ -40,28 +40,47 @@ print("Maximum profit:", maximum_profit)
 
 #>>>>>>>>>>> Naive  approach<<<<<<<<<<<:
 
-#We use the itertools.permutations() function to generate all possible permutations of the jobs
-import itertools
-def get_max_pro(jobs):
+# Define the function to find the maximum profit
+def max_pro(jobs):
+    # Get the number of jobs
+    n = len(jobs)
+    # Initialize the maximum profit and the set of jobs that yield the maximum profit
     max_pro = 0
-    n_done_jobs = 0
-#For each permutation, we iterate through the jobs in order and calculate the total profit earned if we schedule them in that order
-    for perm in itertools.permutations(jobs):
-        pro = 0
-        t = 0
-        for job in perm:
-            if t + 1 <= job[1]:
-                t += 1
-                pro += job[2]
-#If the total profit earned is greater than the current maximum profit, we update the maximum profit and the number of jobs done
-        if pro > max_pro:
-            max_pro = pro
-            n_done_jobs = len(perm)
-    return (n_done_jobs, max_pro)
+    max_jobs = []
+    # Loop through all possible subsets of jobs
+    for i in range(2**n):
+        # Initialize the set of selected jobs and the current profit
+        sel_jobs = []
+        curr_pro = 0
+        # Loop through all jobs
+        for j in range(n):
+            # If the jth bit of i is 1, add job j to the set of selected jobs
+            if (i >> j) & 1:
+                sel_jobs.append(jobs[j])
+        # Sort the selected jobs by their deadlines
+        sel_jobs = sorted(sel_jobs, key=lambda x: x[1])
+        # Initialize the current time
+        curr_time = 0
+        # Loop through the selected jobs
+        for job in sel_jobs:
+            # If the job can be completed within its deadline, update the current time and profit
+            if curr_time + 1 <= job[1]:
+                curr_time += 1
+                curr_pro += job[2]
+        # If the current set of jobs yields a higher profit than the previous maximum, update the maximum profit and the set of jobs
+        if curr_pro > max_pro:
+            max_pro = curr_pro
+            max_jobs = sel_jobs
+    # Convert the set of jobs that yield the maximum profit to a list of job IDs and return the length of the list and the maximum profit as a tuple
+    max_jobs = [job[0] for job in max_jobs]
+    return len(max_jobs), max_pro
 
-#Using the Example    
+# Define the set of jobs
 jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
-print(get_max_pro(jobs))
+# Find the maximum profit and the set of jobs that yield the maximum profit
+result = max_pro(jobs)
+# Print the result
+print(result)
 
 # >>>>>>>>>>>>>>>>>>>>> Comparison between the two approaches<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
