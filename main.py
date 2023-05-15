@@ -29,7 +29,7 @@ def jobs_function(jobs):
                 number_of_jobs += 1
                 break
     #return results
-    return num_jobs, max_profit
+    return number_of_jobs, maximum_profit
   #apply input
 jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
 number_of_jobs, maximum_profit = jobs_function(jobs)
