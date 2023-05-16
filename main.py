@@ -146,8 +146,6 @@ jobs = pd.DataFrame({"id":[i for i in range(0,5)],
                             "profit":[0 ,5, 6, 5, 3]})
 n=len(jobs.id)
 brute_force(jobs.id,jobs.start,jobs.finish,jobs.profit,n)
-max_profit = brute_force(jobs, S, F, P, n)
-print("Maximum profit:", max_profit)
 # let's define another approach to slove the problem
 def greedy_recursive_sol( S, F, spliter, n):
     """
