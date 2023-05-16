@@ -140,11 +140,12 @@ def brute_force( jobs, S, F, P, n):
                 
     return max(profits)
 # and this is an example for apply the method 
-jobs = [1, 2, 3, 4, 5]
-S = [1, 3, 0, 5, 8]
-F = [2, 4, 6, 7, 9]
-P = [5, 6, 3, 8, 2]
-n = len(jobs)
+jobs = pd.DataFrame({"id":[i for i in range(0,5)],
+                           "start":[0 ,2 ,1 ,5 ,6],
+                           "finish":[0 ,5 ,6 ,7 ,8],
+                            "profit":[0 ,5, 6, 5, 3]})
+n=len(jobs.id)
+brute_force(jobs.id,jobs.start,jobs.finish,jobs.profit,n)
 max_profit = brute_force(jobs, S, F, P, n)
 print("Maximum profit:", max_profit)
 # let's define another approach to slove the problem
