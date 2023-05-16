@@ -118,6 +118,7 @@ plt.show()
 ####################### Part Two #########################
 
 # function to get the max profit by try all the possible combination without any overlap 
+from itertools import combinations
 def brute_force( jobs, S, F, P, n):
     profits = []
     for n in range(1,n):
@@ -138,7 +139,14 @@ def brute_force( jobs, S, F, P, n):
                 profits.append(profit)
                 
     return max(profits)
-
+# and this is an example for apply the method 
+jobs = [1, 2, 3, 4, 5]
+S = [1, 3, 0, 5, 8]
+F = [2, 4, 6, 7, 9]
+P = [5, 6, 3, 8, 2]
+n = len(jobs)
+max_profit = brute_force(jobs, S, F, P, n)
+print("Maximum profit:", max_profit)
 # let's define another approach to slove the problem
 def greedy_recursive_sol( S, F, spliter, n):
     """
