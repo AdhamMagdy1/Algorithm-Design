@@ -92,7 +92,7 @@ def compare_functions():
         
         # Measure execution time for the naive function
         start_time = time.time()
-        get_max_pro(jobs)
+        max_pro(jobs)
         naive_time = time.time() - start_time
         
         # Measure execution time for the dynamic programming function
